@@ -30,17 +30,41 @@ describe("Login form", function() {
     browser = new SeleniumUtils(driver);
   });
 
+  // it("Positive test", async function() {
+  //   // browser.go(App.url); // переход
+  //   // await page.isLoad();  // проверяем, что загрузилась
+
+  //   driver.get('https://m.vk.com/');
+  //   await driver.sleep(2000);
+  //   await driver.findElement(By.css('[name="email"]')).sendKeys('+79211402028');
+  //   await driver.sleep(1000);
+  //   await driver.findElement(By.css('[type="password"]')).sendKeys('test');
+  //   await driver.sleep(1000);
+  //   await driver.findElement(By.css('[type="submit"]')).click(); // кнопка "войти"
+
+
+  //   // await browser.keys(page.email(), App.user.login);
+  //   // await browser.keys(page.password(), App.user.password); 
+  //   // await browser.click(page.submit());
+  //   // await calendarPage.isLoad();
+  //   // await assert.equal(await calendarPage.isPage(), true);
+  // });
+
+
+
+
   it("Positive test", async function() {
     // browser.go(App.url); // переход
     // await page.isLoad();  // проверяем, что загрузилась
 
-    driver.get('https://m.vk.com/');
+    driver.get('https://mail.ru/');
     await driver.sleep(2000);
-    await driver.findElement(By.css('[name="email"]')).sendKeys('+79211402028');
+    await driver.findElement(By.css('[name="login"]')).sendKeys('ironova');
+    await driver.findElement(By.css('#auth [type="submit"]')).click();
     await driver.sleep(1000);
     await driver.findElement(By.css('[type="password"]')).sendKeys('test');
     await driver.sleep(1000);
-    await driver.findElement(By.css('[type="submit"]')).click(); // кнопка "войти"
+    await driver.findElement(By.css('#auth [type="submit"]')).click(); // кнопка "войти"
 
 
     // await browser.keys(page.email(), App.user.login);
@@ -49,6 +73,11 @@ describe("Login form", function() {
     // await calendarPage.isLoad();
     // await assert.equal(await calendarPage.isPage(), true);
   });
+
+
+
+
+
 
   // it("Negative test", async function() {    // ctrl k+c;   ctrl k+u (закомментировать; отменить комментирование)
   //   debugger;
