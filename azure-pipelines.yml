@@ -19,3 +19,4 @@ steps:
     npm install
     npm run refresh
   displayName: 'npm install and build'
+  
