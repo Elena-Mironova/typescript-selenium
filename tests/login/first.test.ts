@@ -68,6 +68,17 @@ describe("Login form", function() {
     await assert.equal(await certificatePage.isPage(), true);
   });
 
+  
+  it("Сломанный тест для azure", async function() {
+    driver.get('https://yandex.ru/');
+    await certificatePage.isLoad();
+    await driver.findElement(By.css('form[action="/verify"] [name="fio"]')).sendKeys('Шарина Юлия Валерьевна');
+    await driver.findElement(By.css('form[action="/verify"] [name="number"]')).sendKeys('TE250-1');
+    await driver.findElement(By.css('form[action="/verify"] button[type="submit"]')).click();
+    await driver.sleep(1000);
+    await assert.equal(await certificatePage.isPage(), true);
+  });
+
   //it("Positive test", async function() {
     // browser.go(App.url); // переход
     // await page.isLoad();  // проверяем, что загрузилась
