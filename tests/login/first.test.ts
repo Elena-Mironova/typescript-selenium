@@ -1,6 +1,7 @@
 import { Builder, WebDriver, Capabilities, By } from "selenium-webdriver";
 import { LoginPage } from "../../pagesObject/login.po";
 import { CalendarPage } from "../../pagesObject//calendar.po";
+import { CertificatePage } from "../../pagesObject//certificate.po";
 import { App } from "../../pagesObject/config.po";
 import { SeleniumUtils } from "../../utils/se.utils";
 
@@ -21,12 +22,14 @@ describe("Login form", function() {
   let driver: WebDriver;
   let page: LoginPage;
   let calendarPage: CalendarPage;
+  let certificatePage: CertificatePage;
   let browser: SeleniumUtils;
 
   before(async function() {
     driver = await new Builder().withCapabilities(capabilities).build();
     page = new LoginPage(driver);
     calendarPage = new CalendarPage(driver);
+    certificatePage = new CertificatePage(driver);
     browser = new SeleniumUtils(driver);
   });
 
@@ -57,16 +60,13 @@ describe("Login form", function() {
 
   it("Negative test Проверка сертификата", async function() {
     driver.get('https://brunoyam.com/verify');
-    await driver.sleep(1000);
+    await certificatePage.isLoad();
     await driver.findElement(By.css('form[action="/verify"] [name="fio"]')).sendKeys('Шарина Юлия Валерьевна');
     await driver.findElement(By.css('form[action="/verify"] [name="number"]')).sendKeys('TE250-1');
     await driver.findElement(By.css('form[action="/verify"] button[type="submit"]')).click();
     await driver.sleep(1000);
-    await driver.findElement(By.css('.v-alert.alert.alert-danger'));
+    await assert.equal(await certificatePage.isPage(), true);
   });
-
-
-  
 
   //it("Positive test", async function() {
     // browser.go(App.url); // переход
