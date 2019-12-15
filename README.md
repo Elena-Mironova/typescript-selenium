@@ -22,5 +22,5 @@ npm run test
 
 or pass 2 and 3 step
 ```sh
-npm run refresh
+npm install && npm run refresh
 ```
