@@ -14,6 +14,10 @@ export class AccountPage {
         let blockOnLoginPage = this.find('.woocommerce-MyAccount-navigation');
         return this.seleniumUtils.existElement(blockOnLoginPage);
     }
-    
+    isLoginForm() {
+        let blockOnLoginPage = this.find('.woocommerce-form.woocommerce-form-login.login');
+        return this.seleniumUtils.existElement(blockOnLoginPage);
+    }
+
     isLoad = () => this.seleniumUtils.wait('.woocommerce');
 }
