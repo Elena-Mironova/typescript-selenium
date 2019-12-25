@@ -9,14 +9,10 @@ export class LoginPage {
         return this.browser.findElement(By.css(cssPath));
     }
 
-    email = () => this.find('[ng-model="ctrl.email"]');
-    password = () => this.find('[type="password"]');
-    submit = () => this.find('[type="button"]');
-
     isPage() {
-        let blockOnLoginPage = this.find('login-access-component');
+        let blockOnLoginPage = this.find('[data-qa="search-input"]');
         return this.seleniumUtils.existElement(blockOnLoginPage);
     }
 
-    isLoad = () => this.seleniumUtils.wait('login-access-component');
+    isLoad = () => this.seleniumUtils.wait('[data-qa="account-login-form"]');
 }

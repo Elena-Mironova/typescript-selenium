@@ -5,19 +5,14 @@ export class AccountPage {
     constructor(private browser: WebDriver) { }
 
     private seleniumUtils = new SeleniumUtils(this.browser);
-
     private find = (cssPath: string) => { 
         return this.browser.findElement(By.css(cssPath));
     }
 
     isPage() {
-        let blockOnLoginPage = this.find('.woocommerce-MyAccount-navigation');
-        return this.seleniumUtils.existElement(blockOnLoginPage);
-    }
-    isLoginForm() {
-        let blockOnLoginPage = this.find('.woocommerce-form.woocommerce-form-login.login');
+        let blockOnLoginPage = this.find('[data-qa="page-title"]');
         return this.seleniumUtils.existElement(blockOnLoginPage);
     }
 
-    isLoad = () => this.seleniumUtils.wait('.woocommerce');
+    isLoad = () => this.seleniumUtils.wait('[data-qa="search-input"]');
 }

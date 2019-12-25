@@ -1,7 +1,7 @@
 import { WebDriver, By } from "selenium-webdriver";
 import { SeleniumUtils } from "../utils/se.utils";
 
-export class CalendarPage {
+export class HhPage {
     constructor(private browser: WebDriver) { }
 
     private seleniumUtils = new SeleniumUtils(this.browser);
@@ -11,9 +11,9 @@ export class CalendarPage {
     }
 
     isPage() {
-        let blockOnLoginPage = this.find('calendar-component');
+        let blockOnLoginPage = this.find('[data-qa="account-login-form"]');
         return this.seleniumUtils.existElement(blockOnLoginPage);
     }
     
-    isLoad = () => this.seleniumUtils.wait('calendar-component');
+    isLoad = () => this.seleniumUtils.wait('.HH-Supernova-MainContent');
 }
